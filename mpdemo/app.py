@@ -28,7 +28,7 @@ def root_default(request, model):
             '<p><a href="%s">Link to %s</a></p>' % (request.link(Model(i)),
                                                     i))
     return ''.join(result)
-            
+
 
 @app.resource(model=Model, render=morepath.render_html)
 def model_default(request, model):
@@ -42,6 +42,5 @@ def main():
     config.scan(mpdemo)
     config.app(app)
     config.commit()
-    
+
     waitress.serve(app)
-    
