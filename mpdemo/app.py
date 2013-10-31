@@ -26,9 +26,9 @@ def get_model(id):
     return Model(id)
 
 
-# the default resource for the root is a list of links
+# the default view for the root is a list of links
 # to models
-@app.resource(model=Root, render=morepath.render_html)
+@app.view(model=Root, render=morepath.render_html)
 def root_default(request, model):
     result = []
     for i in range(10):
@@ -38,8 +38,8 @@ def root_default(request, model):
     return ''.join(result)
 
 
-# the default resource for a model
-@app.resource(model=Model, render=morepath.render_html)
+# the default view for a model
+@app.view(model=Model, render=morepath.render_html)
 def model_default(request, model):
     return '<p>I am the model: %s</p>' % model.id
 
