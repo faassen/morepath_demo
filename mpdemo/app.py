@@ -51,7 +51,6 @@ def main():
     config = morepath.Config()
     import mpdemo
     config.scan(mpdemo)
-    config.app(app)
     config.commit()
 
     # serve app as WSGI app
