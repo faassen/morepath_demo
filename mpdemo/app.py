@@ -49,8 +49,7 @@ def main():
     morepath.setup()
     # load application specific configuration
     config = morepath.Config()
-    import mpdemo
-    config.scan(mpdemo)
+    config.scan()
     config.commit()
 
     # serve app as WSGI app
