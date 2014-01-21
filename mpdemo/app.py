@@ -8,7 +8,7 @@ app = morepath.App()
 
 
 # the root model for the application
-@app.root()
+@app.model(path='')
 class Root(object):
     pass
 
