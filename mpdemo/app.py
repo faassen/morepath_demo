@@ -29,7 +29,7 @@ def get_model(id):
 # the default view for the root is a list of links
 # to models
 @app.view(model=Root, render=morepath.render_html)
-def root_default(request, model):
+def root_default(self, request):
     result = []
     for i in range(10):
         result.append(
@@ -40,8 +40,8 @@ def root_default(request, model):
 
 # the default view for a model
 @app.view(model=Model, render=morepath.render_html)
-def model_default(request, model):
-    return '<p>I am the model: %s</p>' % model.id
+def model_default(self, request):
+    return '<p>I am the model: %s</p>' % self.id
 
 
 def main():
