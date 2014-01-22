@@ -7,8 +7,8 @@ import waitress
 app = morepath.App()
 
 
-# the root model for the application
-@app.model(path='')
+# the root path for the application
+@app.path(path='')
 class Root(object):
     pass
 
@@ -20,8 +20,8 @@ class Model(object):
 
 
 # publish model under root under {id}
-@app.model(model=Model, path="{id}",
-           variables=lambda model: {'id': model.id})
+@app.path(model=Model, path="{id}",
+          variables=lambda model: {'id': model.id})
 def get_model(id):
     return Model(id)
 
