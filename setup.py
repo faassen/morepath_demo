@@ -15,10 +15,10 @@ setup(name='mpdemo',
         'morepath',
         'waitress',
         ],
-      extras_require = dict(
-        test=['pytest >= 2.0',
-              'pytest-cov'],
-        ),
+      # extras_require = dict(
+      #   test=['pytest >= 2.0',
+      #         'pytest-cov'],
+      #   ),
       entry_points= {
         'console_scripts': [
             'mpdemo = mpdemo.app:main',

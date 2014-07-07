@@ -2,9 +2,10 @@ import morepath
 import waitress
 
 
-# the morepath application that contains configuration and is
-# WSGI app
-app = morepath.App()
+# the morepath application class contains configuration and its
+# instance is a WSGI app
+class app(morepath.App):
+    pass
 
 
 # the root path for the application
@@ -33,7 +34,7 @@ def root_default(self, request):
     result = []
     for i in range(10):
         result.append(
-            '<p><a href="%s">Link to %s</a></p>' % (request.link(Model(i)),
+            '<p><a href="%s">ELLink to %s</a></p>' % (request.link(Model(i)),
                                                     i))
     return ''.join(result)
 
@@ -43,6 +44,16 @@ def root_default(self, request):
 def model_default(self, request):
     return '<p>I am the model: %s</p>' % self.id
 
+@app.view(model=Model, request_method='POST', render=morepath.render_html)
+def another_view(self, request):
+    pass
+
+class M(object):
+    pass
+
+@app.view(model=M, request_method='GET')
+def get_test(self, request):
+    pass
 
 def main():
     # set up morepath's own configuration
@@ -52,4 +63,4 @@ def main():
     config.commit()
 
     # serve app as WSGI app
-    waitress.serve(app)
+    waitress.serve(app())
